@@ -14,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"/>
@@ -25,6 +26,13 @@
                     VerticalAlignment="Stretch">
             <RadioButton Content="Main" 
                          Style="{StaticResource MenuButtonTheme}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2"
+                    Grid.Column="0"
+                    Orientation="Vertical"
+                    VerticalAlignment="Stretch">
+            <Button Content="Test"
+                    Style="{StaticResource ButtonTheme}"/>
         </StackPanel>
     </Grid>
 </Window>

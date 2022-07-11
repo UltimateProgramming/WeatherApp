@@ -28,8 +28,8 @@
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Margin" Value="10,5,10,5"/>
         </Style.Setters>
     </Style>
