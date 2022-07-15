@@ -6,19 +6,19 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RadioButton">
-                        <Border Name="Border"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="Black"
-                                BorderThickness="0"
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding Background}"
+                                BorderThickness="1"
                                 VerticalAlignment="Stretch"
-                                HorizontalAlignment="Stretch">
+                                HorizontalAlignment="Stretch"
+                                CornerRadius="10">
                             <TextBlock Text="{TemplateBinding Content}"
                                             VerticalAlignment="Center"
                                             Margin="20,0,0,0"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Border" Property="BorderThickness" Value="3"/>
+                                <Setter Property="Background" Value="#FF707070"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

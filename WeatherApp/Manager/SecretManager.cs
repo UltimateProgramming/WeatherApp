@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
+using Newtonsoft.Json;
 using WeatherApp.Models;
-using WeatherApp.Helper;
 
 namespace WeatherApp.Manager
 {
@@ -30,7 +30,7 @@ namespace WeatherApp.Manager
         #region Constructor
         private SecretManager() 
         {
-            Secret = SecretHelper.LoadSecret(GetSecretFilePath());
+            Secret = LoadSecret(GetSecretFilePath());
         }
         #endregion
 
@@ -42,6 +42,12 @@ namespace WeatherApp.Manager
             return targetPath;
         }
 
-
+        private static Secret LoadSecret(string secretFilePath)
+        {
+            string secretjsonfile;
+            secretjsonfile = File.ReadAllText(secretFilePath);
+            var secret = JsonConvert.DeserializeObject<Secret>(secretjsonfile);
+            return secret;
+        }
     }
 }

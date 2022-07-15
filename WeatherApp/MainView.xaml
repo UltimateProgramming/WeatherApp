@@ -12,7 +12,7 @@
         Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.15*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
@@ -20,19 +20,38 @@
             <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="1"
-                    Grid.Column="0"
-                    Orientation="Vertical"
-                    VerticalAlignment="Stretch">
-            <RadioButton Content="Main" 
-                         Style="{StaticResource MenuButtonTheme}"/>
-        </StackPanel>
-        <StackPanel Grid.Row="2"
-                    Grid.Column="0"
-                    Orientation="Vertical"
-                    VerticalAlignment="Stretch">
-            <Button Content="Test"
-                    Style="{StaticResource ButtonTheme}"/>
-        </StackPanel>
+        <Border Grid.Row="0"
+                Grid.Column="0"
+                BorderBrush="Black"
+                BorderThickness="0,1,1,0">
+            <Label Content="WeatherApp"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Style="{StaticResource MainLabelAppTheme}"/>
+        </Border>
+        <Border Grid.Row="1"
+                Grid.Column="0"
+                BorderBrush="Black"
+                BorderThickness="0,1,1,1">
+            <StackPanel Orientation="Vertical"
+                        VerticalAlignment="Stretch">
+                <RadioButton Content="Main" 
+                            Style="{StaticResource MenuButtonTheme}"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="2"
+                Grid.Column="0"
+                BorderBrush="Black"
+                BorderThickness="0,0,1,0">
+            <StackPanel VerticalAlignment="Stretch">
+                <Button Content="Setting"
+                        Style="{StaticResource ButtonTheme}"/>
+            </StackPanel>
+        </Border>
+        <Frame Name="ContentFrame"
+               Grid.Row="1"
+               Grid.Column="1"
+               Grid.RowSpan="2">
+        </Frame>
     </Grid>
 </Window>
