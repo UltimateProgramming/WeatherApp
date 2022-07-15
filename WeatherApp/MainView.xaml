@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherApp"
+        xmlns:viewmodel="clr-namespace:WeatherApp.ViewModels"
         mc:Ignorable="d"
         Title="WeatherApp"
         MinHeight="450"
@@ -24,7 +25,7 @@
                 Grid.Column="0"
                 BorderBrush="Black"
                 BorderThickness="0,1,1,0">
-            <Label Content="WeatherApp"
+            <Label Content="{Binding AppName}"
                    Grid.Row="0"
                    Grid.Column="0"
                    Style="{StaticResource MainLabelAppTheme}"/>
@@ -36,7 +37,9 @@
             <StackPanel Orientation="Vertical"
                         VerticalAlignment="Stretch">
                 <RadioButton Content="Main" 
-                            Style="{StaticResource MenuButtonTheme}"/>
+                             x:Name="Main"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Checked="MainRadioButton_Checked"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="2"

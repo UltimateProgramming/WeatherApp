@@ -1,5 +1,6 @@
 ﻿using System.Windows;
-using WeatherApp.Views;
+using System.Windows.Controls;
+using WeatherApp.ViewModels;
 
 namespace WeatherApp
 {
@@ -8,10 +9,18 @@ namespace WeatherApp
     /// </summary>
     public partial class MainView : Window
     {
+        private MainViewVM mainViewVM;
         public MainView()
         {
             InitializeComponent();
-            ContentFrame.Content = new CurrentWeatherView();
+            mainViewVM = new MainViewVM(ContentFrame);
+            DataContext = mainViewVM;
+        }
+
+        public void MainRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+
         }
     }
 }
