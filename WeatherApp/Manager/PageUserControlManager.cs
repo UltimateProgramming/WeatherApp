@@ -22,10 +22,10 @@ namespace WeatherApp.Manager
 
         private PageUserControlManager() { }
 
-        public void AddUserControlPage(UserControl page)
+        public void AddUserControlPage(string key, UserControl page)
         {
-            if (!_userControlDictionary.ContainsKey(nameof(page)))
-                _userControlDictionary.Add(nameof(page), page);
+            if (!_userControlDictionary.ContainsKey(key))
+                _userControlDictionary.Add(key, page);
         }
 
         public UserControl GetSpecificUserControl(string key)
@@ -35,6 +35,11 @@ namespace WeatherApp.Manager
             if (userControl == null)
                 throw new ArgumentNullException(nameof(userControl));
             return userControl;
+        }
+
+        public bool HasSpecificUserControl(string key)
+        {
+            return _userControlDictionary.ContainsKey(key);
         }
 
         public void DeleteSpecificUserControlPage(string key)

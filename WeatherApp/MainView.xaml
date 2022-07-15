@@ -37,9 +37,12 @@
             <StackPanel Orientation="Vertical"
                         VerticalAlignment="Stretch">
                 <RadioButton Content="Main" 
-                             x:Name="Main"
+                             x:Name="Main_RadioButton"
                              Style="{StaticResource MenuButtonTheme}"
                              Checked="MainRadioButton_Checked"/>
+                <RadioButton Content="Test" 
+                             x:Name="Test"
+                             Style="{StaticResource MenuButtonTheme}"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="2"

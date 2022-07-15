@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
-using WeatherApp.Commands;
+using WeatherApp.Manager;
+using WeatherApp.Views;
 
 namespace WeatherApp.ViewModels
 {
@@ -18,6 +19,11 @@ namespace WeatherApp.ViewModels
         {
             get { return _appName; }
         }
+
+        public Dictionary<string, bool> RadioButtonsChecked
+        {
+            get { return _radioButtonCheckedDict; }
+        }
         #endregion
 
         #region Commands
@@ -27,19 +33,22 @@ namespace WeatherApp.ViewModels
         public MainViewVM(Frame frame)
         {
             _frame = frame;
-            MenuButtonCheckedCommand = new Command(CheckMenuButton, CanCheckMenuButton);
         }
 
-        private void CheckMenuButton(object value)
+        public void SetRadioButtonsChecked(string key, bool value)
         {
-
+            if (!_radioButtonCheckedDict.ContainsKey(key))
+                _radioButtonCheckedDict.Add(key, value);
+            else
+                _radioButtonCheckedDict[key] = value;
         }
 
-        private bool CanCheckMenuButton(object value)
-        {
-            bool IsChecked;
-            if (_radioButtonCheckedDict.TryGetValue()
-        }
+        public void SetCurrentWeatherView(string viewname)
+        { 
+            if (!PageUserControlManager.Instance.HasSpecificUserControl(viewname))
+                PageUserControlManager.Instance.AddUserControlPage(viewname, new CurrentWeatherView());
 
+            _frame.Content = PageUserControlManager.Instance.GetSpecificUserControl(viewname);                
+        }
     }
 }
