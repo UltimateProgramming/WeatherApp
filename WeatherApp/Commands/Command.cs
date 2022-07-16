@@ -8,9 +8,13 @@ namespace WeatherApp.Commands
         private Action<object> _execute;
         private Func<object, bool> _canExecute;
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
-        public Command(Action<object> execute, Func<object, bool> canExecute)
+        public Command(Action<object> execute, Func<object, bool> canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;
@@ -18,15 +22,13 @@ namespace WeatherApp.Commands
 
         public bool CanExecute(object parameter)
         {
-            if (_canExecute != null)
-                return _canExecute(parameter);
-            else
-                return false;
+            return _canExecute != null || _canExecute(parameter);
         }
 
         public void Execute(object parameter)
         {
             _execute(parameter);
         }
+
     }
 }

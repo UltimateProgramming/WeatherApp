@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using WeatherApp.Manager;
 using WeatherApp.Views;
+using WeatherApp.Commands;
 
 namespace WeatherApp.ViewModels
 {
@@ -10,8 +11,8 @@ namespace WeatherApp.ViewModels
     {
         #region private Variables
         private readonly string _appName = "WeatherApp";
-        private Frame _frame;
-        private Dictionary<string, bool> _radioButtonCheckedDict = new Dictionary<string, bool>();
+        private object _currentView;
+        private bool _menuButtonChecked;
         #endregion
 
         #region Properties
@@ -20,35 +21,46 @@ namespace WeatherApp.ViewModels
             get { return _appName; }
         }
 
-        public Dictionary<string, bool> RadioButtonsChecked
+        public object CurrentView
         {
-            get { return _radioButtonCheckedDict; }
+            get { return _currentView; }
+            set { SetProperty<object>(ref _currentView, value, nameof(CurrentView)); }
+        }
+
+        public bool MainMenuButtonChecked
+        {
+            get { return _menuButtonChecked; }
+            set { SetProperty<bool>(ref _menuButtonChecked, value, nameof(MainMenuButtonChecked)); }
         }
         #endregion
 
         #region Commands
-        ICommand MenuButtonCheckedCommand;
+        public ICommand MainMenuViewCommand { get; set; }
         #endregion
 
-        public MainViewVM(Frame frame)
+        public MainViewVM() 
         {
-            _frame = frame;
+            MainMenuViewCommand = new Command(SetMainMenuButtonView, CanSetMainMenuButtonView);
+            MainMenuButtonChecked = true;
+            SetCurrentWeatherView(nameof(CurrentWeatherView));
         }
 
-        public void SetRadioButtonsChecked(string key, bool value)
+        private void SetMainMenuButtonView(object parameter)
         {
-            if (!_radioButtonCheckedDict.ContainsKey(key))
-                _radioButtonCheckedDict.Add(key, value);
-            else
-                _radioButtonCheckedDict[key] = value;
+            SetCurrentWeatherView(nameof(CurrentWeatherView));
         }
 
-        public void SetCurrentWeatherView(string viewname)
+        private bool CanSetMainMenuButtonView(object parameter)
+        {
+            return true;
+        }
+
+        private void SetCurrentWeatherView(string viewname)
         { 
             if (!PageUserControlManager.Instance.HasSpecificUserControl(viewname))
                 PageUserControlManager.Instance.AddUserControlPage(viewname, new CurrentWeatherView());
 
-            _frame.Content = PageUserControlManager.Instance.GetSpecificUserControl(viewname);                
+            CurrentView = PageUserControlManager.Instance.GetSpecificUserControl(viewname);                
         }
     }
 }
