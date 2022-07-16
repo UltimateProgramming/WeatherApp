@@ -43,9 +43,9 @@
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="{Binding MainMenuButtonChecked}"
                              Command="{Binding MainMenuViewCommand}"/>
-                <RadioButton Content="Test" 
-                             x:Name="Test"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Test"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding TestMenuViewCommand}"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="2"

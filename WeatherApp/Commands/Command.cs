@@ -29,6 +29,5 @@ namespace WeatherApp.Commands
         {
             _execute(parameter);
         }
-
     }
 }

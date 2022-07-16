@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using WeatherApp.Manager;
 
 namespace WeatherApp
 {
