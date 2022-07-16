@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WeatherApp.Views"
+             xmlns:viewmodel="clr-namespace:WeatherApp.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewmodel:CurrentWeatherViewVM/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
@@ -20,15 +24,56 @@
         <Grid Grid.Row="1"
               Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="0.3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                
-            </Grid.ColumnDefinitions>
-            <Label Grid.Row="0"
-                   Grid.Column="1"
-                   Content="Location"/>
+            <Grid Grid.Row="0"
+                  Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalAlignment="Stretch"
+                            Width="Auto">
+                    <Label Width="Auto"
+                           Style="{StaticResource LabelTheme}"
+                           VerticalContentAlignment="Center"
+                           Content="{Binding LocationLabel}"/>
+                    <Border BorderBrush="Black"
+                            BorderThickness="1"
+                            HorizontalAlignment="Stretch"
+                            Margin="10,0,0,0"
+                            Height="20">
+                        <TextBox HorizontalAlignment="Stretch"
+                                 VerticalContentAlignment="Center"
+                                 Height="20"/>
+                    </Border>
+                </DockPanel>
+            </Grid>
+            <Border Grid.Row="1"
+                    Grid.Column="0"
+                    BorderBrush="Black"
+                    BorderThickness="1">
+                <Grid Grid.Row="1"
+                      Grid.Column="0">
+                    <Grid.RowDefinitions>
+
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Border>
         </Grid>
+        <Label Grid.Row="0"
+               Grid.Column="1"
+               FontSize="24"
+               FontWeight="Bold"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Content="{Binding Title}"/>
     </Grid>
 </UserControl>

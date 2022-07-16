@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using WeatherApp.Manager;
 using WeatherApp.Views;
 using WeatherApp.Commands;
@@ -36,11 +34,13 @@ namespace WeatherApp.ViewModels
 
         #region Commands
         public ICommand MainMenuViewCommand { get; set; }
+        public ICommand TestMenuViewCommand { get; set; }
         #endregion
 
         public MainViewVM() 
         {
             MainMenuViewCommand = new Command(SetMainMenuButtonView, CanSetMainMenuButtonView);
+            TestMenuViewCommand = new Command(SetTestMenuButtonView, CanSetTestMenuButtonView);
             MainMenuButtonChecked = true;
             SetCurrentWeatherView(nameof(CurrentWeatherView));
         }
@@ -51,6 +51,16 @@ namespace WeatherApp.ViewModels
         }
 
         private bool CanSetMainMenuButtonView(object parameter)
+        {
+            return true;
+        }
+
+        private void SetTestMenuButtonView(object parameter)
+        {
+            CurrentView = null;
+        }
+
+        private bool CanSetTestMenuButtonView(object parameter)
         {
             return true;
         }

@@ -1,7 +1,5 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using WeatherApp.ViewModels;
-using WeatherApp.Views;
 
 namespace WeatherApp
 {
@@ -10,7 +8,6 @@ namespace WeatherApp
     /// </summary>
     public partial class MainView : Window
     {
-        private MainViewVM mainViewVM;
         public MainView()
         {
             InitializeComponent();
