@@ -44,15 +44,16 @@
                     <Label Width="Auto"
                            Style="{StaticResource LabelTheme}"
                            VerticalContentAlignment="Center"
-                           Content="{Binding LocationLabel}"/>
+                           Content="{Binding LocationLbl}"/>
                     <Border BorderBrush="Black"
                             BorderThickness="1"
                             HorizontalAlignment="Stretch"
                             Margin="10,0,0,0"
-                            Height="20">
+                            Height="30">
                         <TextBox HorizontalAlignment="Stretch"
                                  VerticalContentAlignment="Center"
-                                 Height="20"/>
+                                 FontSize="15"
+                                 Height="30"/>
                     </Border>
                 </DockPanel>
             </Grid>
@@ -63,8 +64,24 @@
                 <Grid Grid.Row="1"
                       Grid.Column="0">
                     <Grid.RowDefinitions>
-
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Grid.RowSpan="2"
+                           FontSize="72"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           HorizontalContentAlignment="Right"
+                           Content="{Binding Temparature}"/>
+                    <Label Grid.Column="1"
+                           Style="{StaticResource LabelTheme}"
+                           Content="{Binding DateLbl}"/>
                 </Grid>
             </Border>
         </Grid>

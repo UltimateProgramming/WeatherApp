@@ -3,7 +3,7 @@
     <Style TargetType="Label"
            x:Key="LabelTheme">
         <Style.Setters>
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="19"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style.Setters>
     </Style>
