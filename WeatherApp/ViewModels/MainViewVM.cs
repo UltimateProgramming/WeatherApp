@@ -49,8 +49,8 @@ namespace WeatherApp.ViewModels
 
         public MainViewVM() 
         {
-            CurrentWeatherMenuViewCommand = new Command(SetCurrentWeatherMenuButtonView, CanSetCurrentWeatherMenuButtonView);
-            AstronomyMenuViewCommand = new Command(SetAstronomyMenuButtonView, CanSetAstronomyMenuButtonView);
+            CurrentWeatherMenuViewCommand = new Command(SetCurrentWeatherMenuButtonView, (x) => { return true; });
+            AstronomyMenuViewCommand = new Command(SetAstronomyMenuButtonView, (x) => { return true; });
             CurrentWeatherMenuButtonChecked = true;
             SetCurrentWeatherView(nameof(CurrentWeatherView));
         }
@@ -59,28 +59,25 @@ namespace WeatherApp.ViewModels
         {
             SetCurrentWeatherView(nameof(CurrentWeatherView));
         }
-
-        private bool CanSetCurrentWeatherMenuButtonView(object parameter)
-        {
-            return true;
-        }
-
-        private void SetAstronomyMenuButtonView(object parameter)
-        {
-            CurrentView = null;
-        }
-
-        private bool CanSetAstronomyMenuButtonView(object parameter)
-        {
-            return true;
-        }
-
         private void SetCurrentWeatherView(string viewname)
         { 
             if (!PageUserControlManager.Instance.HasSpecificUserControl(viewname))
                 PageUserControlManager.Instance.AddUserControlPage(viewname, new CurrentWeatherView());
 
             CurrentView = PageUserControlManager.Instance.GetSpecificUserControl(viewname);                
+        }
+
+        private void SetAstronomyMenuButtonView(object parameter)
+        {
+            SetAstronomyView(nameof(AstronomyView));
+        }
+
+        private void SetAstronomyView(string viewname)
+        {
+            if (!PageUserControlManager.Instance.HasSpecificUserControl(viewname))
+                PageUserControlManager.Instance.AddUserControlPage(viewname, new AstronomyView());
+
+            CurrentView = PageUserControlManager.Instance.GetSpecificUserControl(viewname);
         }
     }
 }
