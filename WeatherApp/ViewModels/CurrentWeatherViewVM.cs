@@ -14,6 +14,8 @@ namespace WeatherApp.ViewModels
         private readonly string _dateLbl = "Date:";
         private readonly string _timeLbl = "Time:";
         private readonly string _conditionLbl = "Condition:";
+        private readonly string _regionnameLbl = "Name:";
+        private readonly string _regionLbl = "Region:";
         private readonly string _getValuesBtnLbl = "Get Values";
         #endregion
 
@@ -22,6 +24,8 @@ namespace WeatherApp.ViewModels
         private string _time = "";
         private string _location = "";
         private string _condition = "";
+        private string _regionname = "";
+        private string _region = "";
 
         #region Label Properties
         public string Title { get { return _title; } }
@@ -29,6 +33,8 @@ namespace WeatherApp.ViewModels
         public string DateLbl { get { return _dateLbl; } }
         public string TimeLbl { get { return _timeLbl; } }
         public string ConditionLbl { get { return _conditionLbl; } }
+        public string RegionNameLbl { get { return _regionnameLbl; } }
+        public string RegionLbl { get { return _regionLbl; } }
         public string GetValueBtnLbl { get { return _getValuesBtnLbl; } }
         #endregion
 
@@ -58,6 +64,16 @@ namespace WeatherApp.ViewModels
             get { return _condition; }
             set { SetProperty<string>(ref _condition, value, nameof(Condition)); }
         }
+        public string RegionName
+        {
+            get { return _regionname; }
+            set { SetProperty<string>(ref _regionname, value, nameof(RegionName)); }
+        }
+        public string Region
+        {
+            get { return _region; }
+            set { SetProperty<string>(ref _region, value, nameof(Region)); }
+        }
 
         public ICommand GetValuesCommand { get; set; }
 
@@ -80,6 +96,8 @@ namespace WeatherApp.ViewModels
             Date = currentWeatherResponse.Location.LocalTime.Date.ToShortDateString();
             Time = currentWeatherResponse.Location.LocalTime.TimeOfDay.ToString();
             Condition = currentWeatherResponse.CurrentWeather.Condition.Text;
+            RegionName = currentWeatherResponse.Location.Name;
+            Region = currentWeatherResponse.Location.Region;
         }
     }
 }
