@@ -16,7 +16,7 @@ namespace WeatherApp.ViewModels
         private readonly string _conditionLbl = "Condition:";
         private readonly string _regionnameLbl = "Name:";
         private readonly string _regionLbl = "Region:";
-        private readonly string _getValuesBtnLbl = "Get Values";
+        private readonly string _getCurrentWeatherBtnLbl = "Get Current Weather";
         #endregion
 
         private string _temparature = "0";
@@ -35,7 +35,7 @@ namespace WeatherApp.ViewModels
         public string ConditionLbl { get { return _conditionLbl; } }
         public string RegionNameLbl { get { return _regionnameLbl; } }
         public string RegionLbl { get { return _regionLbl; } }
-        public string GetValueBtnLbl { get { return _getValuesBtnLbl; } }
+        public string GetCurrentWeatherBtnLbl { get { return _getCurrentWeatherBtnLbl; } }
         #endregion
 
         public string Temparature
@@ -75,11 +75,11 @@ namespace WeatherApp.ViewModels
             set { SetProperty<string>(ref _region, value, nameof(Region)); }
         }
 
-        public ICommand GetValuesCommand { get; set; }
+        public ICommand GetCurrentWeatherCommand { get; set; }
 
         public CurrentWeatherViewVM()
         {
-            GetValuesCommand = new Command(GetValuesFromAPI, (x) => { return true; });
+            GetCurrentWeatherCommand = new Command(GetValuesFromAPI, (x) => { return true; });
         }
 
         private async void GetValuesFromAPI(object parameter)

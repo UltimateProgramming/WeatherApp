@@ -164,9 +164,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="{Binding GetValueBtnLbl}"
+            <Button Content="{Binding GetCurrentWeatherBtnLbl}"
                     Style="{StaticResource ButtonTheme}"
-                    Command="{Binding GetValuesCommand}"/>
+                    Command="{Binding GetCurrentWeatherCommand}"/>
         </Grid>
     </Grid>
 </UserControl>

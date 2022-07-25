@@ -7,10 +7,10 @@
         xmlns:viewmodel="clr-namespace:WeatherApp.ViewModels"
         mc:Ignorable="d"
         Title="WeatherApp"
-        MinHeight="450"
-        Height="450" 
-        MinWidth="800"
-        Width="800">
+        MinHeight="500"
+        Height="500" 
+        MinWidth="1000"
+        Width="1000">
     <Window.DataContext>
         <viewmodel:MainViewVM/>
     </Window.DataContext>
@@ -21,7 +21,7 @@
             <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Border Grid.Row="0"
@@ -39,13 +39,13 @@
                 BorderThickness="0,1,1,1">
             <StackPanel Orientation="Vertical"
                         VerticalAlignment="Stretch">
-                <RadioButton Content="Main"
+                <RadioButton Content="{Binding CurrentWeatherBtnLbl}"
                              Style="{StaticResource MenuButtonTheme}"
-                             IsChecked="{Binding MainMenuButtonChecked}"
-                             Command="{Binding MainMenuViewCommand}"/>
-                <RadioButton Content="Test"
+                             IsChecked="{Binding CurrentWeatherMenuButtonChecked}"
+                             Command="{Binding CurrentWeatherMenuViewCommand}"/>
+                <RadioButton Content="{Binding AstronomyBtnLbl}"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding TestMenuViewCommand}"/>
+                             Command="{Binding AstronomyMenuViewCommand}"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="2"
