@@ -15,7 +15,7 @@ namespace WeatherApp.Manager
         #endregion
 
         #region Properties
-        public static SecretManager Setting
+        public static SecretManager Instance
         {
             get 
             { 

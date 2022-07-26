@@ -28,5 +28,113 @@
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
                Content="{Binding Title}"/>
+        <Grid Grid.Row="1"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel Grid.Column="0">
+                    <Label Style="{StaticResource LabelTheme}"
+                           VerticalAlignment="Center"
+                           Content="{Binding LocationLbl}"/>
+                    <Border BorderBrush="Black"
+                            BorderThickness="1"
+                            HorizontalAlignment="Stretch"
+                            Margin="10,0,0,0"
+                            Height="30">
+                        <TextBox HorizontalAlignment="Stretch"
+                                 VerticalContentAlignment="Center"
+                                 FontSize="15"
+                                 Height="30"
+                                 Text="{Binding Location, Mode=TwoWay}"/>
+                    </Border>
+                </DockPanel>
+                <DockPanel Grid.Column="1">
+                    <Label Style="{StaticResource LabelTheme}"
+                           VerticalAlignment="Center"
+                           Content="{Binding DateLbl}"/>
+                    <Border BorderBrush="Black"
+                            BorderThickness="1"
+                            HorizontalAlignment="Stretch"
+                            Margin="10,0,0,0"
+                            Height="30">
+                        <TextBox HorizontalAlignment="Stretch"
+                                 VerticalContentAlignment="Center"
+                                 FontSize="15"
+                                 Height="30"
+                                 Text="{Binding Date, StringFormat=dd.MM.yyyy, Mode=TwoWay}"/>
+                    </Border>
+                </DockPanel>
+            </Grid>
+            <Border Grid.Row="1"
+                    Grid.Column="0"
+                    BorderBrush="Black"
+                    BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Row="0"
+                               Grid.Column="0">
+                        <Label Content="{Binding SunRiseLbl}"
+                               Style="{StaticResource LabelTheme}"/>
+                        <Label Content="{Binding SunRise}"
+                               Style="{StaticResource LabelTheme}"/>
+                    </DockPanel>
+                    <DockPanel Grid.Row="0"
+                               Grid.Column="1">
+                        <Label Content="{Binding SunSetLbl}"
+                               Style="{StaticResource LabelTheme}"/>
+                        <Label Content="{Binding SunSet}"
+                               Style="{StaticResource LabelTheme}"/>
+                    </DockPanel>
+                    <DockPanel Grid.Row="1"
+                               Grid.Column="0">
+                        <Label Content="{Binding MoonRiseLbl}"
+                               Style="{StaticResource LabelTheme}"/>
+                        <Label Content="{Binding MoonRise}"
+                               Style="{StaticResource LabelTheme}"/>
+                    </DockPanel>
+                    <DockPanel Grid.Row="1"
+                               Grid.Column="1">
+                        <Label Content="{Binding MoonSetLbl}"
+                               Style="{StaticResource LabelTheme}"/>
+                        <Label Content="{Binding MoonSet}"
+                               Style="{StaticResource LabelTheme}"/>
+                    </DockPanel>
+                    <DockPanel Grid.Row="2"
+                               Grid.Column="0">
+                        <Label Content="{Binding MoonPhaseLbl}"
+                               Style="{StaticResource LabelTheme}"/>
+                        <Label Content="{Binding MoonPhase}"
+                               Style="{StaticResource LabelTheme}"/>
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2"
+              Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="{Binding GetAstronomyBtnLbl}"
+                    Style="{StaticResource ButtonTheme}"
+                    Command="{Binding GetAstronomyValuesCommand}"/>
+        </Grid>
     </Grid>
 </UserControl>
